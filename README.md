@@ -1,5 +1,9 @@
 # NeoSSH
 
+
+<img width="1394" height="898" alt="Capture d’écran du 2026-05-06 01-13-43" src="https://github.com/user-attachments/assets/fc9a3509-0711-4e4c-8ff6-b9d15099ab01" />
+
+
 ![Installer](https://github.com/ZEMM-CPP/NeoSSH/releases/tag/v1.0.0)
 
 Client SSH/SFTP moderne et open-source pour Linux, macOS et Windows. Conçu comme une alternative légère à Termius, avec support complet hors-ligne et un système de thèmes personnalisable.
