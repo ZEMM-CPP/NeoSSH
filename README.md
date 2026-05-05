@@ -4,7 +4,6 @@ Client SSH/SFTP moderne et open-source pour Linux, macOS et Windows. Conçu comm
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Licence](https://img.shields.io/badge/license-MIT-green)
-![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)
 
 ---
 
