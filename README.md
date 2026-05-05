@@ -4,7 +4,6 @@ Un client SSH/SFTP moderne et open-source, construit avec Electron, Vue.js et No
 
 ![NeoSSH](https://img.shields.io/badge/version-1.0.0-blue)
 ![Licence](https://img.shields.io/badge/licence-MIT-green)
-![Plateforme](https://img.shields.io/badge/plateforme-linux-lightgrey)
 
 ---
 
