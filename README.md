@@ -1,51 +1,51 @@
 # NeoSSH
 
-A modern, open-source SSH/SFTP client built with Electron, Vue.js, and Node.js. Designed as a lightweight alternative to Termius, with full offline support and a customizable theme system.
+Un client SSH/SFTP moderne et open-source, construit avec Electron, Vue.js et Node.js. Conçu comme une alternative légère à Termius, avec un support hors-ligne complet et un système de thèmes personnalisables.
 
 ![NeoSSH](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Platform](https://img.shields.io/badge/platform-linux-lightgrey)
+![Licence](https://img.shields.io/badge/licence-MIT-green)
+![Plateforme](https://img.shields.io/badge/plateforme-linux-lightgrey)
 
 ---
 
-## Features
+## Fonctionnalités
 
-- **Real-time SSH terminal** powered by xterm.js with streaming I/O via IPC
-- **SFTP file browser** with drag-and-drop upload, download, rename, copy/paste, and delete
-- **Multiple session tabs** with KeepAlive for seamless switching
-- **Host management** stored locally as JSON (no cloud, no login)
-- **Password & SSH key** authentication
-- **Host reachability ping** — shows Online/Offline status via TCP check
-- **Custom title bar** with minimize/maximize/close, frameless window
-- **Theme system** — 5 built-in themes, add your own via JSON
-- **Context menus** for both SFTP files and empty areas
-- **Confirmation dialogs** for destructive actions (delete hosts/files)
-- **100% offline** — no cloud dependencies, no telemetry
-- **Linux `.deb` packaging**
+- **Terminal SSH en temps réel** propulsé par xterm.js avec diffusion I/O via IPC
+- **Navigateur de fichiers SFTP** avec glisser-déposer pour l'envoi, le téléchargement, le renommage, le copier/coller et la suppression
+- **Onglets de session multiples** avec KeepAlive pour une navigation fluide
+- **Gestion des hôtes** stockée localement en JSON (pas de cloud, pas de connexion requise)
+- **Authentification** par mot de passe et par clé SSH
+- **Vérification de disponibilité des hôtes** — affiche le statut En ligne/Hors ligne via vérification TCP
+- **Barre de titre personnalisée** avec boutons réduire/agrandir/fermer, fenêtre sans bordure
+- **Système de thèmes** — 5 thèmes intégrés, ajoutez les vôtres via JSON
+- **Menus contextuels** pour les fichiers SFTP et les zones vides
+- **Dialogues de confirmation** pour les actions destructives (suppression d'hôtes/fichiers)
+- **100% hors-ligne** — aucune dépendance cloud, aucune télémétrie
+- **Packaging Linux `.deb`**
 
 ---
 
-## Tech Stack
+## Stack Technique
 
-| Layer | Technology |
-|-------|-----------|
-| Desktop | Electron 28 |
+| Couche | Technologie |
+|--------|------------|
+| Bureau | Electron 28 |
 | Frontend | Vue.js 3 (Composition API) |
 | Build | Vite 5 |
 | Terminal | xterm.js 5 + FitAddon + WebLinksAddon |
 | SSH | ssh2 1.15 |
-| Theme engine | CSS custom properties + JSON config |
+| Moteur de thèmes | Propriétés CSS personnalisées + configuration JSON |
 
 ---
 
-## Quick Start
+## Démarrage Rapide
 
-### Prerequisites
+### Prérequis
 
 - Node.js >= 18
 - npm >= 9
 
-### Development
+### Développement
 
 ```bash
 npm install
@@ -55,47 +55,47 @@ npm run dev
 ### Build
 
 ```bash
-npm run build          # Vite build + electron-builder .deb
-npm run build:deb      # Same as above
-npm run preview        # Preview production build
+npm run build          # Build Vite + paquet electron-builder .deb
+npm run build:deb      # Identique à ce qui précède
+npm run preview        # Prévisualiser le build de production
 ```
 
-Output: `dist/neossh_1.0.0_amd64.deb`
+Sortie : `dist/neossh_1.0.0_amd64.deb`
 
 ---
 
-## Project Structure
+## Structure du Projet
 
 ```
 NeoSSH/
 ├── electron/
-│   ├── main.js              # Main process: window, IPC handlers, host CRUD
-│   └── preload.js           # Context bridge: exposes electronAPI to renderer
+│   ├── main.js              # Processus principal : fenêtre, gestionnaires IPC, CRUD hôtes
+│   └── preload.js           # Pont de contexte : expose electronAPI au renderer
 ├── core/
-│   └── sshManager.js        # SSH connections, SFTP channels, host reachability
+│   └── sshManager.js        # Connexions SSH, canaux SFTP, disponibilité des hôtes
 ├── src/
 │   ├── components/
-│   │   ├── App.vue              # Root layout: TitleBar, Sidebar, TabBar, views
-│   │   ├── TitleBar.vue         # Custom draggable title bar with window controls
-│   │   ├── Sidebar.vue          # Navigation rail (Home, Add Host, Refresh, Settings)
-│   │   ├── TabBar.vue           # Session tab strip (SSH/SFTP tabs)
-│   │   ├── WelcomePage.vue      # Home screen: host grid, search, online/offline status
-│   │   ├── TerminalCard.vue     # xterm.js terminal with theme-aware colors
-│   │   ├── SFTPCard.vue         # SFTP file browser: nav, search, drag-drop, context menu
-│   │   ├── SettingsPage.vue     # Theme gallery, color palette, docs
-│   │   ├── SettingsHostDrawer.vue  # Host add/edit form (slide-out drawer)
-│   │   ├── ConfirmDialog.vue    # Themed confirmation modal (promise-based API)
-│   │   └── SessionPicker.vue    # Legacy session picker (unused, kept for reference)
+│   │   ├── App.vue              # Mise en page racine : TitleBar, Sidebar, TabBar, vues
+│   │   ├── TitleBar.vue         # Barre de titre déplaçable avec contrôles de fenêtre
+│   │   ├── Sidebar.vue          # Rail de navigation (Accueil, Ajouter hôte, Actualiser, Paramètres)
+│   │   ├── TabBar.vue           # Barre d'onglets de session (onglets SSH/SFTP)
+│   │   ├── WelcomePage.vue      # Écran d'accueil : grille d'hôtes, recherche, statut en ligne/hors ligne
+│   │   ├── TerminalCard.vue     # Terminal xterm.js avec couleurs adaptées au thème
+│   │   ├── SFTPCard.vue         # Navigateur SFTP : navigation, recherche, glisser-déposer, menu contextuel
+│   │   ├── SettingsPage.vue     # Galerie de thèmes, palette de couleurs, documentation
+│   │   ├── SettingsHostDrawer.vue  # Formulaire d'ajout/édition d'hôte (tiroir coulissant)
+│   │   ├── ConfirmDialog.vue    # Modal de confirmation thématisée (API basée sur les promesses)
+│   │   └── SessionPicker.vue    # Sélecteur de session historique (inutilisé, conservé pour référence)
 │   ├── lib/
-│   │   └── themeManager.js      # Theme engine: load, apply, CSS variable injection
-│   ├── App.vue                  # Main layout + state management
-│   └── main.js                  # Vue app entry point
+│   │   └── themeManager.js      # Moteur de thèmes : chargement, application, injection de variables CSS
+│   ├── App.vue                  # Mise en page principale + gestion d'état
+│   └── main.js                  # Point d'entrée de l'application Vue
 ├── themes/
-│   ├── dark.json                # Default: neutral dark tones
-│   ├── dark-blue.json           # Deep ocean blue with navy accents
-│   ├── dark-green.json          # Forest green with earthy tones
-│   ├── dark-red.json            # Crimson dark with warm red accents
-│   └── light.json               # Clean light theme
+│   ├── dark.json                # Défaut : tons sombres neutres
+│   ├── dark-blue.json           # Bleu océan profond avec accents marine
+│   ├── dark-green.json          # Vert forêt avec tons terreux
+│   ├── dark-red.json            # Sombre cramoisi avec accents rouge chaud
+│   └── light.json               # Thème clair et épuré
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -105,26 +105,26 @@ NeoSSH/
 
 ## Architecture
 
-### Process Model
+### Modèle de Processus
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        Main Process                          │
+│                     Processus Principal                      │
 │  ┌───────────────┐  ┌─────────────────┐  ┌───────────────┐  │
-│  │ BrowserWindow │  │ IPC Handlers    │  │ SSHManager    │  │
-│  │ (frameless)   │◄─┤ (invoke/send)   │◄─┤ (ssh2 Client) │  │
+│  │ BrowserWindow │  │ Gestionnaires   │  │ SSHManager    │  │
+│  │ (sans bordure)│◄─┤ IPC             │◄─┤ (Client ssh2) │  │
 │  └───────────────┘  └─────────────────┘  └───────────────┘  │
 └─────────────────────────┬───────────────────────────────────┘
                           │ contextBridge
 ┌─────────────────────────┴───────────────────────────────────┐
-│                       Renderer Process                       │
+│                     Processus Renderer                       │
 │  ┌───────────┐  ┌────────────┐  ┌───────────┐  ┌──────────┐ │
 │  │ App.vue   │  │ TitleBar   │  │ Sidebar    │  │ TabBar   │ │
-│  │ (state)   │  │ (controls) │  │ (nav)      │  │ (tabs)   │ │
+│  │ (état)    │  │ (contrôles)│  │ (nav)      │  │ (onglets)│ │
 │  └───────────┘  └────────────┘  └───────────┘  └──────────┘ │
 │  ┌─────────────────────┐  ┌──────────────────────────────┐  │
 │  │ WelcomePage.vue     │  │ TerminalCard.vue / SFTPCard  │  │
-│  │ (host grid + ping)  │  │ (session views, KeepAlive)   │  │
+│  │ (grille hôtes+ping) │  │ (vues de session, KeepAlive) │  │
 │  └─────────────────────┘  └──────────────────────────────┘  │
 │  ┌──────────────────────────────────────────────────────────┐ │
 │  │ SettingsPage.vue │ ConfirmDialog │ SettingsHostDrawer    │ │
@@ -132,12 +132,12 @@ NeoSSH/
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Terminal Streaming
+### Diffusion du Terminal
 
-Terminal I/O uses **IPC events** (not `invoke`/`response`) to avoid blocking:
+Les E/S du terminal utilisent des **événements IPC** (et non `invoke`/`response`) pour éviter le blocage :
 
 ```
-User types in xterm.js
+L'utilisateur tape dans xterm.js
        │
        ▼
   terminal:write (ipcRenderer.send)
@@ -146,10 +146,10 @@ User types in xterm.js
   SSHManager.write(connectionId, data)
        │
        ▼
-  shell stream receives input
+  Le flux shell reçoit les données
        │
        ▼
-  stream emits 'data'
+  Le flux émet 'data'
        │
        ▼
   event.sender.send('terminal:data', ...)
@@ -158,53 +158,53 @@ User types in xterm.js
   ipcRenderer.on('terminal:data') → terminal.write(data)
 ```
 
-### SFTP Flow
+### Flux SFTP
 
-SFTP reuses the same SSH connection — `getSFTP()` opens an SFTP channel on demand and caches it per connection:
+Le SFTP réutilise la même connexion SSH — `getSFTP()` ouvre un canal SFTP à la demande et le met en cache par connexion :
 
 ```
-SFTPCard.vue  ─invoke→  main.js  ─call→  SSHManager.sftpList/Download/Upload/Delete/Mkdir
+SFTPCard.vue  ─invoke→  main.js  ─appel→  SSHManager.sftpList/Download/Upload/Delete/Mkdir
 ```
 
-### Session Management
+### Gestion des Sessions
 
-Sessions are stored as reactive refs in `App.vue`. Terminal and SFTP cards are wrapped in separate `<KeepAlive>` components with `v-show` toggling, preserving xterm.js buffer and SFTP state when switching between tabs.
+Les sessions sont stockées en tant que refs réactives dans `App.vue`. Les cartes Terminal et SFTP sont enveloppées dans des composants `<KeepAlive>` séparés avec basculement `v-show`, préservant le buffer xterm.js et l'état SFTP lors des changements d'onglets.
 
 ---
 
-## Theme Architecture
+## Architecture des Thèmes
 
-NeoSSH uses a **CSS custom property** system driven by JSON theme files. The entire UI references theme variables — no hardcoded colors in components.
+NeoSSH utilise un système de **propriétés CSS personnalisées** piloté par des fichiers de thème JSON. L'intégralité de l'interface référence des variables de thème — aucune couleur codée en dur dans les composants.
 
-### How It Works
+### Fonctionnement
 
-1. **Theme files** (`themes/*.json`) define all colors in a nested structure
-2. **`themeManager.js`** reads the theme, converts camelCase keys to kebab-case, and injects them as CSS variables on `:root`
-3. **All components** reference `var(--app-bg-primary)`, `var(--text-primary)`, etc.
-4. **Terminal** reads computed CSS variables to build its xterm.js theme object
+1. Les **fichiers de thème** (`themes/*.json`) définissent toutes les couleurs dans une structure imbriquée
+2. **`themeManager.js`** lit le thème, convertit les clés camelCase en kebab-case, et les injecte comme variables CSS sur `:root`
+3. **Tous les composants** référencent `var(--app-bg-primary)`, `var(--text-primary)`, etc.
+4. Le **terminal** lit les variables CSS calculées pour construire son objet de thème xterm.js
 
-### CSS Variable Namespaces
+### Espaces de Noms des Variables CSS
 
-| Namespace | Purpose | Examples |
-|-----------|---------|----------|
-| `--app-*` | Surface colors | `bg-primary`, `bg-secondary`, `bg-card`, `bg-sidebar`, `bg-hover`, `bg-input`, `bg-tab-active` |
-| `--text-*` | Text hierarchy | `primary`, `secondary`, `tertiary`, `quaternary`, `disabled`, `inverse` |
-| `--border-*` | Borders & rings | `primary`, `secondary`, `tertiary`, `focus`, `ring` |
-| `--accent-*` | Interactive colors | `primary`, `primary-hover`, `success`, `success-bg`, `danger`, `danger-bg`, `warning`, `info` |
-| `--shadow-*` | Box shadows | `sm`, `md`, `lg`, `glow-primary`, `glow-danger` |
-| `--terminal-*` | Terminal colors | `bg`, `fg`, `cursor`, `cursorAccent`, `selectionBackground`, full 16-color palette, `line-hover`, `line-active` |
-| `--scrollbar-*` | Scrollbar styling | `track`, `thumb`, `thumbHover` |
-| `--badge-*` | Status badges | `online-bg`, `online-text`, `offline-bg`, `offline-text`, `sftp-bg`, `sftp-text` |
+| Espace de noms | Utilité | Exemples |
+|----------------|---------|----------|
+| `--app-*` | Couleurs de surface | `bg-primary`, `bg-secondary`, `bg-card`, `bg-sidebar`, `bg-hover`, `bg-input`, `bg-tab-active` |
+| `--text-*` | Hiérarchie du texte | `primary`, `secondary`, `tertiary`, `quaternary`, `disabled`, `inverse` |
+| `--border-*` | Bordures et contours | `primary`, `secondary`, `tertiary`, `focus`, `ring` |
+| `--accent-*` | Couleurs interactives | `primary`, `primary-hover`, `success`, `success-bg`, `danger`, `danger-bg`, `warning`, `info` |
+| `--shadow-*` | Ombres portées | `sm`, `md`, `lg`, `glow-primary`, `glow-danger` |
+| `--terminal-*` | Couleurs du terminal | `bg`, `fg`, `cursor`, `cursorAccent`, `selectionBackground`, palette 16 couleurs complète, `line-hover`, `line-active` |
+| `--scrollbar-*` | Style de la barre de défilement | `track`, `thumb`, `thumbHover` |
+| `--badge-*` | Badges de statut | `online-bg`, `online-text`, `offline-bg`, `offline-text`, `sftp-bg`, `sftp-text` |
 
-### Theme File Structure
+### Structure d'un Fichier de Thème
 
 ```json
 {
-  "id": "my-theme",
-  "name": "My Theme",
-  "author": "Your Name",
+  "id": "mon-theme",
+  "name": "Mon Thème",
+  "author": "Votre Nom",
   "version": "1.0.0",
-  "description": "Description of the theme",
+  "description": "Description du thème",
   "type": "dark",
   "colors": {
     "app": { ... },
@@ -235,74 +235,74 @@ NeoSSH uses a **CSS custom property** system driven by JSON theme files. The ent
 }
 ```
 
-### Adding a Custom Theme
+### Ajouter un Thème Personnalisé
 
-1. Create a JSON file in `themes/` following the structure above
-2. Import it in `src/lib/themeManager.js`
-3. Add it to the `builtinThemes` array
+1. Créez un fichier JSON dans `themes/` en suivant la structure ci-dessus
+2. Importez-le dans `src/lib/themeManager.js`
+3. Ajoutez-le au tableau `builtinThemes`
 
-The theme is then available in the Settings page gallery and persists across restarts via `localStorage`.
+Le thème est alors disponible dans la galerie de la page Paramètres et persiste entre les redémarrages via `localStorage`.
 
-### Built-in Themes
+### Thèmes Intégrés
 
-| Theme | ID | Type | Description |
+| Thème | ID | Type | Description |
 |-------|-----|------|-------------|
-| **Dark** | `dark` | dark | Neutral dark tones, blue accent |
-| **Dark Blue** | `dark-blue` | dark | Deep ocean blue, sky blue accent |
-| **Dark Green** | `dark-green` | dark | Forest green, emerald accent |
-| **Dark Red** | `dark-red` | dark | Crimson dark, warm red accent |
-| **Light** | `light` | light | Clean white, modern gray palette |
+| **Sombre** | `dark` | dark | Tons sombres neutres, accent bleu |
+| **Sombre Bleu** | `dark-blue` | dark | Bleu océan profond, accent bleu ciel |
+| **Sombre Vert** | `dark-green` | dark | Vert forêt, accent émeraude |
+| **Sombre Rouge** | `dark-red` | dark | Sombre cramoisi, accent rouge chaud |
+| **Clair** | `light` | light | Blanc épuré, palette gris moderne |
 
 ---
 
-## IPC API Reference
+## Référence de l'API IPC
 
 ### Terminal
 
-| Channel | Direction | Description |
-|---------|-----------|-------------|
-| `terminal:write` | renderer → main | Send user input to shell |
-| `terminal:resize` | renderer → main | Resize terminal cols/rows |
-| `terminal:data` | main → renderer | Stream shell output to xterm |
-| `terminal:close` | main → renderer | Notify connection closed |
+| Canal | Direction | Description |
+|-------|-----------|-------------|
+| `terminal:write` | renderer → main | Envoyer les saisies utilisateur au shell |
+| `terminal:resize` | renderer → main | Redimensionner les colonnes/lignes du terminal |
+| `terminal:data` | main → renderer | Diffuser la sortie du shell vers xterm |
+| `terminal:close` | main → renderer | Notifier la fermeture de la connexion |
 
 ### SSH
 
-| Channel | Type | Description |
-|---------|------|-------------|
-| `ssh:connect` | invoke | Establish SSH connection (password or key) |
-| `ssh:openShell` | invoke | Open interactive shell for terminal session |
-| `ssh:disconnect` | invoke | Close connection and cleanup |
+| Canal | Type | Description |
+|-------|------|-------------|
+| `ssh:connect` | invoke | Établir une connexion SSH (mot de passe ou clé) |
+| `ssh:openShell` | invoke | Ouvrir un shell interactif pour la session terminal |
+| `ssh:disconnect` | invoke | Fermer la connexion et nettoyer |
 
 ### SFTP
 
-| Channel | Type | Description |
-|---------|------|-------------|
-| `sftp:list` | invoke | List directory contents |
-| `sftp:download` | invoke | Download remote file to local path |
-| `sftp:upload` | invoke | Upload buffer to remote path |
-| `sftp:delete` | invoke | Delete remote file or folder |
-| `sftp:mkdir` | invoke | Create remote directory |
+| Canal | Type | Description |
+|-------|------|-------------|
+| `sftp:list` | invoke | Lister le contenu d'un répertoire |
+| `sftp:download` | invoke | Télécharger un fichier distant vers un chemin local |
+| `sftp:upload` | invoke | Envoyer un buffer vers un chemin distant |
+| `sftp:delete` | invoke | Supprimer un fichier ou dossier distant |
+| `sftp:mkdir` | invoke | Créer un répertoire distant |
 
-### Host Management
+### Gestion des Hôtes
 
-| Channel | Type | Description |
-|---------|------|-------------|
-| `hosts:load` | invoke | Load hosts from `hosts.json` |
-| `hosts:save` | invoke | Save hosts to `hosts.json` |
-| `host:check` | invoke | TCP reachability check (online/offline) |
+| Canal | Type | Description |
+|-------|------|-------------|
+| `hosts:load` | invoke | Charger les hôtes depuis `hosts.json` |
+| `hosts:save` | invoke | Sauvegarder les hôtes dans `hosts.json` |
+| `host:check` | invoke | Vérification TCP de disponibilité (en ligne/hors ligne) |
 
-### Window
+### Fenêtre
 
-| Channel | Type | Description |
-|---------|------|-------------|
-| `window:minimize` | send | Minimize window |
-| `window:maximize` | send | Toggle maximize/restore |
-| `window:close` | send | Close application |
-| `window:isMaximized` | invoke | Get maximize state |
+| Canal | Type | Description |
+|-------|------|-------------|
+| `window:minimize` | send | Réduire la fenêtre |
+| `window:maximize` | send | Basculer agrandir/restaurer |
+| `window:close` | send | Fermer l'application |
+| `window:isMaximized` | invoke | Obtenir l'état agrandi |
 
 ---
 
-## License
+## Licence
 
 MIT
